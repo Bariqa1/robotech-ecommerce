@@ -1,0 +1,40 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show shadow-sm mb-3 text-end" role="alert">
+                    <i class="fas fa-check-circle me-2"></i> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="card shadow-sm border-0 p-4">
+            <h3 class="text-center mb-4 fw-bold text-primary">تسجيل الدخول</h3>
+            <form method="post" class="text-end">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary w-100 py-2 mt-3 fw-bold">دخول</button>
+            </form>
+            <hr>
+            <p class="text-center small mb-0">
+                ليس لديك حساب؟ <a href="{% url 'signup' %}" class="fw-bold text-decoration-none">إنشاء حساب جديد</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+    label { font-weight: 600; margin-top: 10px; }
+    .helptext { display: none; }
+</style>
+{% endblock %}

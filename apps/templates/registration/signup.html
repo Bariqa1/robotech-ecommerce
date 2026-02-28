@@ -1,0 +1,37 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<style>
+    .form-signup p {
+        margin-bottom: 15px;
+    }
+    .form-signup input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+    .form-signup ul {
+        font-size: 0.8rem;
+        color: #666;
+        padding-right: 20px;
+    }
+</style>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 p-4">
+            <h3 class="text-center mb-4 fw-bold text-primary">إنشاء حساب جديد</h3>
+            <form method="post" class="form-signup text-end" dir="rtl">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary w-100 py-2 mt-3 fw-bold">تسجيل الحساب</button>
+            </form>
+            <hr>
+            <p class="text-center small">
+                لديك حساب بالفعل؟ <a href="{% url 'login' %}" class="fw-bold">سجل دخولك من هنا</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
